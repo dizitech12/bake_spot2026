@@ -1375,33 +1375,7 @@
             window.open(whatsappUrl, '_blank');
         });
 
-        btnInstagram.addEventListener('click', async () => {
-            const message = `Hi Kavya 👋\n\nI want to order:\n\nProduct: ${currentProduct.name}\nPrice: ${currentProduct.price}\nQuantity: ${currentQuantity}\n\nPlease let me know the availability. Thank you!`;
-
-            // Copy order message to clipboard
-            try {
-                await navigator.clipboard.writeText(message);
-            } catch (err) {
-                // Fallback for older browsers / insecure contexts
-                const textarea = document.createElement('textarea');
-                textarea.value = message;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            }
-
-            // Show toast notification
-            showToast('✅ Order message copied! Paste it in Instagram chat.');
-
-            // Wait 1.5 seconds so the user can see the notification, then open Instagram DM
-            setTimeout(() => {
-                const instagramDMUrl = `https://ig.me/m/${INSTAGRAM_HANDLE}`;
-                window.open(instagramDMUrl, '_blank');
-            }, 2000);
-        });
+        
 
         // Close popup when clicking overlay
         popupOverlay.addEventListener('click', (e) => {
